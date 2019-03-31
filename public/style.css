@@ -1,0 +1,12 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+}
+img{
+  height: 200px;
+}
+.blog {
+    display: block;
+    width: 81%;
+    height: 250px;
+}

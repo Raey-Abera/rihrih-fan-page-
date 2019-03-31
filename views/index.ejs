@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <title>Haus of Rihanna</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="jumbotron text-center">
+        <h1>Haus of Rihanna</h1>
+        <img src="img/rih.jpg" alt="Rihana Photo">
+
+        <p>Login or Signup:</p>
+
+        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span>Login</a>
+        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span>Signup</a>
+
+    </div>
+
+</div>
+
+<div class="">
+  <h3>Messages</h3>
+  <ul class="messages">
+  <% for(var i=0; i<messages.length; i++) {%>
+    <li class="message">
+      <span><%= messages[i].name %></span>
+      <span><%= messages[i].msg %></span>
+      <p><%= messages[i].topic %></p>
+      <span><%= messages[i].thumbUp %></span>
+      <span><i class="fas fa-heart" aria-hidden="true"></i></span>
+      <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+      <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+    </li>
+  <% } %>
+  </ul>
+
+</div>
+
+
+</body>
+</html>
