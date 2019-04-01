@@ -3,10 +3,34 @@ body{
   word-wrap:break-word;
 }
 img{
-  height: 200px;
+      margin-left: 35%;
 }
 .blog {
     display: block;
     width: 81%;
     height: 250px;
+}
+
+h1{
+  text-align: center;
+}
+
+p{
+  text-align: center;
+}
+
+section{
+  margin-left: 46%;
+}
+.container{
+  background-color:rgb(195, 170, 152);
+}
+.bottom{
+  background-color: lightgrey;
+  width:50%;
+  margin-left: 25%;
+}
+
+ul{
+  border:2px solid red;
 }
