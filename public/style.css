@@ -1,13 +1,15 @@
 body{
   padding-top:80px;
   word-wrap:break-word;
+  color:rgb(212, 177, 147)
 }
 img{
-      margin-left: 35%;
+  margin-left: 26%;
+  width: 48%;
 }
 .blog {
     display: block;
-    width: 81%;
+    width: 80%;
     height: 250px;
 }
 
@@ -23,14 +25,26 @@ section{
   margin-left: 46%;
 }
 .container{
-  background-color:rgb(195, 170, 152);
+  background-color:rgb(44, 99, 105);
 }
 .bottom{
   background-color: lightgrey;
   width:50%;
   margin-left: 25%;
 }
-
-ul{
-  border:2px solid red;
+.gif{
+  margin-left: 1%;
+ width: 30%;
+}
+.fa-heart{
+  color:red;
+}
+.fa-angry{
+  color:yellow;
+}
+.fa-grin-squint-tears{
+  color:yellow;
+}
+.fa-trash{
+  color:white;
 }

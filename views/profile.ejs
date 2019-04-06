@@ -18,7 +18,7 @@
     <div class="row">
 
         <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
+        <!-- <div class="col-sm-6">
             <div class="well">
                 <h3><span class="fa fa-user"></span> Local</h3>
 
@@ -35,7 +35,7 @@
                 <% } %>
 
             </div>
-        </div>
+        </div> -->
         <div class="col-sm-6">
           <h3>Messages</h3>
           <ul class="messages">
@@ -44,16 +44,21 @@
               <span><%= messages[i].name %></span>
               <span><%= messages[i].msg %></span>
               <p><%= messages[i].topic %></p>
-              <span><%= messages[i].thumbUp %></span>
+              <span><%= messages[i].heart %></span>
               <span><i class="far fa-heart" aria-hidden="true"></i></span>
-              <span><i class="fas fa-heart-broken" aria-hidden="true"></i></span>
-
-
-
+              <span><i class="fas fa-angry" aria-hidden="true"></i></span>
+              <span><i class="fas fa-grin-squint-tears" aria-hidden="true"></i></span>
               <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+              <% if( messages[i].reaction === 'grin'){ %>
+                <img src="img/gif.gif" alt="">
+                <% } else if( messages[i].reaction === 'anger'){ %>
+                  <img src="img/sweating.gif" alt="">
+              <% } %>
             </li>
           <% } %>
           </ul>
+
+
 
           <h2>Add a message</h2>
         <% if (user.local.email) { %>

@@ -8,7 +8,7 @@ module.exports = function(app, passport, db) {
     // });
 
     app.get('/', function(req, res) {
-      console.log(req)
+      // console.log(req)
         db.collection('messages').find().toArray((err, result) => {
           if (err) return console.log(err)
           res.render('index.ejs', {
@@ -20,7 +20,7 @@ module.exports = function(app, passport, db) {
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-      console.log(req)
+      // console.log(req)
         db.collection('messages').find().toArray((err, result) => {
           if (err) return console.log(err)
           res.render('profile.ejs', {
@@ -39,7 +39,7 @@ module.exports = function(app, passport, db) {
 // message board routes ===============================================================
 
     app.post('/messages', (req, res) => {
-      db.collection('messages').save({name: req.body.name, msg: req.body.msg, thumbUp: 0, heart:0, heartBreak:0, topic: req.body.topic, },(err, result) => {
+      db.collection('messages').save({name: req.body.name, msg: req.body.msg, heart:0, topic: req.body.topic, },(err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/profile')
@@ -47,10 +47,11 @@ module.exports = function(app, passport, db) {
     })
 
     app.put('/messages', (req, res) => {
+      console.log(req.body.heart)
       db.collection('messages')
       .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
         $set: {
-          thumbUp:req.body.thumbUp + 1
+          heart:req.body.heart + 1
         }
       }, {
         sort: {_id: -1},
@@ -61,11 +62,11 @@ module.exports = function(app, passport, db) {
       })
     })
 
-    app.put('/heartBreak', (req, res) => {
+    app.put('/anger', (req, res) => {
       db.collection('messages')
       .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
         $set: {
-          thumbUp:req.body.thumbUp - 1
+          reaction:'anger'
         }
       }, {
         sort: {_id: -1},
@@ -76,6 +77,21 @@ module.exports = function(app, passport, db) {
       })
     })
 
+    app.put('/grin', (req, res) => {
+      console.log(req.body.reaction)
+      db.collection('messages')
+      .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
+        $set: {
+          reaction:'grin'
+        }
+      }, {
+        sort: {_id: -1},
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+    })
 
 
     app.delete('/messages', (req, res) => {

@@ -1,20 +1,41 @@
-var thumbUp = document.getElementsByClassName("far fa-heart");
 var trash = document.getElementsByClassName("fa-trash");
-var heartBreak = document.getElementsByClassName("fas fa-heart-broken");
+var heart = document.getElementsByClassName("fa-heart");
+var anger = document.getElementsByClassName("fa-angry");
+var grin = document.getElementsByClassName("fa-grin-squint-tears");
 
-
-Array.from(thumbUp).forEach(function(element) {
+Array.from(anger).forEach(function(element) {
       element.addEventListener('click', function(){
         const name = this.parentNode.parentNode.childNodes[1].innerText
         const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[7].innerText)
-        fetch('messages', {
+        fetch('anger', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
             'name': name,
             'msg': msg,
-            'thumbUp':thumbUp
+            'reaction':'anger'
+          })
+        })
+        .then(response => {
+          if (response.ok) return response.json()
+        })
+        .then(data => {
+          console.log(data)
+          window.location.reload(true)
+        })
+      });
+});
+Array.from(grin).forEach(function(element) {
+      element.addEventListener('click', function(){
+        const name = this.parentNode.parentNode.childNodes[1].innerText
+        const msg = this.parentNode.parentNode.childNodes[3].innerText
+        fetch('grin', {
+          method: 'put',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            'name': name,
+            'msg': msg,
+            'reaction':'grin'
           })
         })
         .then(response => {
@@ -27,18 +48,19 @@ Array.from(thumbUp).forEach(function(element) {
       });
 });
 
-Array.from(heartBreak).forEach(function(element) {
+Array.from(heart).forEach(function(element) {
       element.addEventListener('click', function(){
         const name = this.parentNode.parentNode.childNodes[1].innerText
         const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const heartBreak = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
+        const heart = parseFloat(this.parentNode.parentNode.childNodes[7].innerText)
+        console.log('this is heart', heart)
         fetch('messages', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
             'name': name,
             'msg': msg,
-            'thumbUp':heartBreak
+            'heart':heart
           })
         })
         .then(response => {
